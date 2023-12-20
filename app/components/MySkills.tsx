@@ -49,6 +49,10 @@ const MySkills = () => {
             title={"Database Management"}
             skills={["mongodb", "mysql", "postgresql", "firebase"]}
           />
+          <SkillsSection
+            title={"UI & UX design"}
+            skills={["figma", "canva", "adobe-xd"]}
+          />
         </div>
       </div>
     </div>
