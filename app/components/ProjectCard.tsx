@@ -3,7 +3,19 @@
 import Link from "next/link";
 import React from "react";
 
-const ProjectCard = ({ title, description, images, githubLink }) => {
+interface ProjectCardProps {
+  title: string;
+  description: string;
+  githubLink: string;
+  images: string[];
+}
+
+const ProjectCard: React.FC<ProjectCardProps> = ({
+  title,
+  description,
+  images,
+  githubLink,
+}) => {
   return (
     <div className="card card-compact w-full bg-base-100 shadow-md md:shadow-xl">
       <figure>

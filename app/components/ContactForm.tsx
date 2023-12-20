@@ -9,14 +9,14 @@ const ContactForm = () => {
     message: "",
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Add your logic to handle the form submission here
     console.log("Form submitted:", formData);
@@ -78,7 +78,7 @@ const ContactForm = () => {
         >
           Message
         </label>
-        <textarea
+        <input
           id="message"
           name="message"
           value={formData.message}
@@ -86,7 +86,7 @@ const ContactForm = () => {
           placeholder="Enter your message"
           className="textarea textarea-primary w-full max-w-xs"
           required
-        ></textarea>
+        ></input>
       </div>
       <div>
         <button type="submit" className="btn btn-primary">
