@@ -20,7 +20,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     html: `<div>${req.body.message}</div><p>Sent from:
     ${req.body.email}</p>`,
   };
-  transporter.sendMail(mailData, function (err, info) {
+  transporter.sendMail(mailData, function (err: Error | null, info: any) {
     if (err) console.log(err);
     else console.log(info);
   });
