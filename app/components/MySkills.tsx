@@ -5,7 +5,7 @@ const MySkills = () => {
   return (
     <div
       id="myskills"
-      className="flex flex-col bg-blue-100 dark:bg-gray-800 dark:text-white w-full h-fit px-20 py-10 pt-24"
+      className="flex flex-col bg-blue-100 dark:bg-gray-800 dark:text-white w-full h-fit px-5 py-10 pt-24 lg:px-10"
     >
       <div className="flex flex-col space-y-4">
         <div className="mb-10 w-full text-center">
