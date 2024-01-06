@@ -21,8 +21,12 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     ${req.body.email}</p>`,
   };
   transporter.sendMail(mailData, function (err: Error | null, info: any) {
-    if (err) console.log(err);
-    else console.log(info);
+    if (err) {
+      console.log(err);
+      res.status(500).send({ error: "Internal Server Error" });
+    } else {
+      console.log(info);
+      res.status(200).send({ message: "Email sent successfully" });
+    }
   });
-  res.status(200);
 }

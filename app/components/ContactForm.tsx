@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +10,7 @@ const ContactForm = () => {
     email: "",
     message: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -18,23 +21,32 @@ const ContactForm = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Add your logic to handle the form submission here
-    console.log("Form submitted:", formData);
+    setIsLoading(true); // Set loading state to true
+
     fetch("/api/contact", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
-    }).then((res) => {
-      console.log("response sent");
-      if (res.status == 200) {
-        console.log("response recieved");
-        setFormData({ name: "", email: "", message: "" });
-      }
-    });
+    })
+      .then((res) => {
+        console.log("response sent");
+        if (res.status === 200) {
+          console.log("response received");
+          setFormData({ name: "", email: "", message: "" });
+          toast.success("Message Sent Successfully", {
+            position: toast.POSITION.TOP_RIGHT,
+            autoClose: 5000,
+          });
+        }
+      })
+      .finally(() => {
+        setIsLoading(false); // Set loading state to false after request completion
+      });
   };
 
   return (
     <form onSubmit={handleSubmit} className="max-w-lg mx-auto">
+      <ToastContainer />
       <div className="mb-4">
         <label
           htmlFor="name"
@@ -89,8 +101,8 @@ const ContactForm = () => {
         ></input>
       </div>
       <div>
-        <button type="submit" className="btn btn-primary">
-          Submit
+        <button type="submit" className="btn btn-primary" disabled={isLoading}>
+          {isLoading ? "Submitting..." : "Submit"}
         </button>
       </div>
     </form>

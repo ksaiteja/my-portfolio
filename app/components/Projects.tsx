@@ -36,7 +36,9 @@ const Projects = () => {
               "Shows cellular network at various locations, suggests network."
             }
             images={["/skills_logos/flutter.svg", "/skills_logos/firebase.svg"]}
-            githubLink={"https://github.com/ksaiteja/goal_quester"}
+            githubLink={
+              "https://github.com/ksaiteja/real_time_signal_strength_checker"
+            }
           />
           <ProjectCard
             title={"Real-time attendance posting based on face recognition"}
